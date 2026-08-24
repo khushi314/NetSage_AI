@@ -314,7 +314,7 @@ with tab2:
   with st.container(border=True):
     st.subheader("✍️ Real-Time Telemetry Diagnostic Test")
     st.caption(
-        "Paste any raw Cisco IOS CLI show-command output to evaluate dynamic"
+        "Paste any raw  CLI show-command output to evaluate dynamic"
         " fault detection and confidence analysis."
     )
 

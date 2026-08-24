@@ -11,3 +11,5 @@
 | 2026-08-23 16:52:11 UTC | NET-001 | Layer 3 | EDITED_OVERRIDE | `configure terminal; ! Remediation configured for Sub-interface administratively down` |
 | 2026-08-23 16:52:14 UTC | NET-001 | Layer 3 | REJECTED | `NONE - FALSE ALARM` |
 | 2026-08-23 16:52:21 UTC | NET-001 | Layer 3 | ACCEPTED | `configure terminal; ! Remediation configured for Sub-interface administratively down` |
+| 2026-08-24 16:07:36 UTC | NET-016 | Layer 4 | ACCEPTED | `configure terminal; ! Remediation configured for ACL missing FTP control port 21 permit rule` |
+| 2026-08-24 16:15:54 UTC | NET-015 | Layer 3 | ACCEPTED | `configure terminal; ! Remediation configured for Invalid static route next-hop IP address` |
