@@ -1,0 +1,114 @@
+========================================
+NETSAGE AI - TEST CASE 15
+========================================
+
+Case ID: NET-015
+Concept: Static Routing
+OSI Layer: Layer 3
+Severity: High
+
+1. TOPOLOGY
+PC0 -> Switch0 -> R0 -> R1 -> Switch1 -> Server0
+
+2. IP ADDRESSING
+
+PC0:
+IP: 192.168.1.10
+Mask: 255.255.255.0
+Gateway: 192.168.1.1
+
+R0 G0/0: 192.168.1.1 /24
+R0 G0/1: 10.0.0.1 /24
+
+R1 G0/0: 10.0.0.2 /24
+R1 G0/1: 172.16.0.1 /16
+
+Server0:
+IP: 172.16.0.10
+Mask: 255.255.0.0
+Gateway: 172.16.0.1
+
+3. CORRECT ROUTE
+
+On R0:
+
+ip route 172.16.0.0 255.255.0.0 10.0.0.2
+
+Test:
+PC0> ping 172.16.0.10
+
+Result: Successful
+
+File:
+TC_15 CORRECT
+
+Screenshot:
+TC_15_SS_CORRECT
+
+4. FAULT
+
+Fault:
+Wrong next-hop IP used.
+
+On R0:
+
+ip route 172.16.0.0 255.255.0.0 10.0.0.5
+
+Actual next-hop should be:
+10.0.0.2
+
+Commands used for evidence:
+
+show ip route
+
+show running-config | include ip route
+
+show ip interface brief
+
+PC0> ping 172.16.0.10
+
+Result: Failed
+
+File:
+TC_15 FAULT
+
+Screenshot:
+TC_15_SS_FAULT
+
+
+5. EXPECTED FAULT
+
+Invalid static route next-hop IP.
+
+Wrong:
+10.0.0.5
+
+Correct:
+10.0.0.2
+
+
+6. FIX
+
+On R0:
+
+no ip route 172.16.0.0 255.255.0.0 10.0.0.5
+
+ip route 172.16.0.0 255.255.0.0 10.0.0.2
+
+
+7. AFTER FIX
+
+PC0> ping 172.16.0.10
+
+Result: Successful
+
+File:
+NET015_Fixed.pkt
+
+Screenshot:
+NET015_03_FIXED.png
+
+
+========================================
+END
+========================================

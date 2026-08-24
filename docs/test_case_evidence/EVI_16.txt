@@ -1,0 +1,94 @@
+========================================
+NETSAGE AI - TEST CASE 16
+========================================
+
+Case ID: NET-016
+Concept: ACL
+OSI Layer: Layer 4
+Severity: Medium
+
+1. TOPOLOGY
+PC0 -> R0 -> Server0
+
+2. IP ADDRESSING
+
+PC0:
+IP: 192.168.1.10 /24
+Gateway: 192.168.1.1
+
+R0 G0/0: 192.168.1.1 /24
+R0 G0/1: 10.0.0.1 /24
+
+Server0:
+IP: 10.0.0.25 /24
+Gateway: 10.0.0.1
+FTP: ON (User: cisco / cisco)
+
+3. CORRECT CONFIG
+
+Test:
+PC0> ftp 10.0.0.25
+
+Result: Successful (Logged in)
+
+File:
+TC_16_CORRECT
+
+Screenshot:
+TC_16_SS_CORRECT
+
+
+4. FAULT
+
+Fault:
+ACL missing FTP control port 21.
+
+On R0:
+access-list 100 permit tcp 192.168.1.0 0.0.0.255 host 10.0.0.25 eq 20
+interface G0/0
+ ip access-group 100 in
+
+Evidence Commands:
+show access-lists 100
+PC0> ftp 10.0.0.25
+
+Result: Failed (Timed out)
+
+File:
+TC_16_FAULT
+
+Screenshot:
+TC_16_SS_FAULT
+
+5. EXPECTED FAULT
+
+ACL blocks FTP port 21 control traffic.
+
+Wrong:
+Only port 20 permitted.
+
+Correct:
+Ports 20 and 21 permitted.
+
+
+6. FIX
+
+On R0:
+access-list 100 permit tcp 192.168.1.0 0.0.0.255 host 10.0.0.25 eq 21
+
+
+7. AFTER FIX
+
+PC0> ftp 10.0.0.25
+
+Result: Successful (Logged in)
+
+File:
+NET016_Fixed.pkt
+
+Screenshot:
+NET016_03_FIXED.png
+
+========================================
+END
+========================================
