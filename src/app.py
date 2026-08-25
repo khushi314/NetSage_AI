@@ -1,7 +1,5 @@
 """NetSage AI: Enterprise Operations Desk & Human-in-the-Loop Gateway
 
-Clean UI with Trust-Driven Guidance Banner, Layer/Confidence Badges, and
-Interactive HITL Audit Ledger.
 """
 
 from datetime import datetime
