@@ -1,2 +1,94 @@
-# NetSage_AI
-AI assisted troubleshooter for Packet Tracer lab problems that reads symptoms and show command output , suggest likely causes  and next steps. and always require human to review before fixing it
+# NetSage AI: Autonomous Network Diagnostics Platform
+
+An enterprise-grade autonomous network reliability and automated troubleshooting pipeline that ingests raw Cisco telemetry, isolates multi-layer network faults, dynamically synthesizes Cisco IOS remediation configurations, computes operational blast radii, and generates reversible rollback scripts under a strict Human-in-the-Loop verification model.
+
+---
+
+## 📌 Problem Statement
+
+In modern network management and educational lab environments (such as Cisco Packet Tracer), diagnosing multi-layer network failures requires extensive manual CLI execution (show commands), expert knowledge across OSI layers, and careful verification before executing remediation steps. 
+
+Key challenges include:
+* **Time-Consuming Troubleshooting: Engineers spend considerable time analyzing verbose CLI outputs to locate misconfigurations (e.g., sub-interface shutdown, incorrect wildcard masks, missing ACL entries). 
+* **Risk of Destructive Remediation: Direct execution of AI-generated configuration commands in network environments introduces catastrophic risks if the model hallucinates or provides incorrect CLI parameters.
+* **Lack of Structured Rules: Pure LLM solutions lack deterministic guarantees, whereas traditional rule engines lack semantic reasoning capabilities. 
+  
+---
+
+## 💡 Solution Overview
+
+NetSage AI introduces an automated, two-tiered hybrid diagnostic architecture that ingests raw Cisco CLI show commands and automates the incident lifecycle:
+## ✨ Uniqueness & Key Innovations
+
+### 1. Hybrid Two-Tier Inference Architecture
+* **Tier 1 (Deterministic Fast Regex Engine):** Recurring network failure signatures (e.g., administratively shutdown interfaces or straightforward static route drops) are evaluated via static heuristic parsers with deterministic precision and zero external API latency.
+* **Tier 2 (Live Semantic AI Engine via Gemini 2.5 Flash):** Complex, contextual anomalies (e.g., extended ACL permit omissions, asymmetric routing loops, and cross-VLAN gateway reachability drops) are analyzed using live LLM semantic reasoning. The engine provides deep contextual explanations, correlates topology endpoints (e.g., linking a VLAN 10 sub-interface failure directly to unreachable VLAN 30 application servers), and suggests exact next-hop diagnostic probes.
+
+### 2. Multi-Layer Diagnostic Coverage (OSI L1–L7)
+* Automatically categorizes network incidents across Physical, Data Link, Network, Transport, and Application layers.
+* Extracts deterministic evidence anchors directly from raw CLI output strings.
+
+### 3. Production Safety & Human-in-the-Loop Controls
+* **Blast Radius Quantification:** Computes operational risk (`LOW`, `MEDIUM`, `HIGH`) prior to command execution.
+* **Human-in-the-Loop Review:** Renders proposed remediation CLI commands in an approval gate UI rather than executing blind changes.
+* **Guaranteed Reversible Rollback:** Synthesizes the exact reverse command sequence for immediate incident containment.
+
+---
+
+## 📸 System Architecture & Verification Evidence
+
+### 1. Real-Time Telemetry Diagnosis (LLM Dynamic Reasoning)
+NetSage AI processes raw Cisco CLI output to dynamically diagnose root causes, affected OSI layers, confidence scores, and remediation commands.
+
+![NetSage AI Diagnosis UI]
+<img width="1920" height="850" alt="Screenshot 2026-08-24 225010" src="https://github.com/user-attachments/assets/0ab551c4-9b0f-40bb-8094-04123616063d" />
+
+[Ingested incident & Diagnostic intelligence]
+<img width="1920" height="911" alt="Screenshot 2026-08-24 224949" src="https://github.com/user-attachments/assets/4f0a54b0-4458-4ab1-bfe9-1aa61d28f0f9" />
+
+[Real time telemetry analysis]
+<img width="1920" height="969" alt="Screenshot 2026-08-24 224852" src="https://github.com/user-attachments/assets/536005e7-fd3a-4d39-897f-eccda9540800" />
+
+[Audit log]
+<img width="1920" height="960" alt="Screenshot 2026-08-24 225024" src="https://github.com/user-attachments/assets/8a5278f1-3ef9-4e33-ac15-0ee106a07473" />
+
+---
+
+### 2. Semantic AI (With API) vs. Deterministic Heuristics (Without API)
+* **With API (Gemini 2.5 Dynamic Reasoning):** Full contextual depth across topology endpoints, deep natural language root cause explanations, dynamic interface parameter extraction, and tailored CLI script generation.
+* **Without API (Regex / Static Engine):** Fast local pattern matching for standard fault signatures without external dependencies.
+
+| Live AI Semantic Reasoning (With API) | Deterministic Static Regex (Without API) |
+<img width="825" height="888" alt="Screenshot 2026-08-24 225809" src="https://github.com/user-attachments/assets/6fc60187-0d7e-4be7-a799-b75d0a2400cf" />
+
+
+
+
+---
+
+### 3. Cisco Packet Tracer Lab Verification (0% Packet Loss / 100% Success)
+Remediation scripts generated by NetSage AI were applied to live Cisco Packet Tracer lab topologies. End-to-end connectivity was restored with **0% packet loss (100% ICMP ping success rate)** across previously broken subnets.
+
+![Packet Tracer Ping Verification](<img width="649" height="479" alt="WhatsApp Image 2026-08-25 at 5 18 43 PM" src="https://github.com/user-attachments/assets/da5d4bbd-4145-4eef-b9dd-272c14be13cb" />
+
+)
+
+---
+
+## 📁 Repository Structure
+
+```text
+NetSage_AI/
+├── docs/
+│   ├── screenshots/          # UI diagnosis & Packet Tracer evidence
+│   └── test_case_evidence/   # Raw telemetry logs (EVI_15.txt, EVI_16.txt, etc.)
+├── lab/
+│   └── network_demo.md       # Packet Tracer topology & failure reproduction notes
+├── prompts/
+│   └── diagnose_prompt.md    # Structured system prompt for telemetry parsing
+├── src/
+│   ├── app.py                # Streamlit UI dashboard
+│   ├── checker.py            # Deterministic static regex checks
+│   └── engine.py             # Hybrid orchestrator (Gemini SDK + Regex)
+├── requirements.txt          # Python dependencies
+└── README.md
