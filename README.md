@@ -42,10 +42,13 @@ NetSage AI processes raw Cisco CLI output to dynamically diagnose root causes, a
 
 ![NetSage AI Diagnosis UI]
 <img width="1920" height="850" alt="Screenshot 2026-08-24 225010" src="https://github.com/user-attachments/assets/0ab551c4-9b0f-40bb-8094-04123616063d" />
+
 [Ingested incident & Diagnostic intelligence]
 <img width="1920" height="911" alt="Screenshot 2026-08-24 224949" src="https://github.com/user-attachments/assets/4f0a54b0-4458-4ab1-bfe9-1aa61d28f0f9" />
+
 [Real time telemetry analysis]
 <img width="1920" height="969" alt="Screenshot 2026-08-24 224852" src="https://github.com/user-attachments/assets/536005e7-fd3a-4d39-897f-eccda9540800" />
+
 [Audit log]
 <img width="1920" height="960" alt="Screenshot 2026-08-24 225024" src="https://github.com/user-attachments/assets/8a5278f1-3ef9-4e33-ac15-0ee106a07473" />
 
@@ -56,7 +59,9 @@ NetSage AI processes raw Cisco CLI output to dynamically diagnose root causes, a
 * **Without API (Regex / Static Engine):** Fast local pattern matching for standard fault signatures without external dependencies.
 
 | Live AI Semantic Reasoning (With API) | Deterministic Static Regex (Without API) |
-<img width="1920" height="946" alt="Screenshot 2026-08-24 225755" src="https://github.com/user-attachments/assets/0defa15c-5811-4964-90a5-5f975a91c062" />
+<img width="825" height="888" alt="Screenshot 2026-08-24 225809" src="https://github.com/user-attachments/assets/6fc60187-0d7e-4be7-a799-b75d0a2400cf" />
+
+
 
 
 ---
