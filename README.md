@@ -98,5 +98,4 @@ NetSage_AI/
 │   ├── app.py                # Streamlit UI dashboard
 │   ├── checker.py            # Deterministic static regex checks
 │   └── engine.py             # Hybrid orchestrator (Gemini SDK + Regex)
-├── requirements.txt          # Python dependencies
 └── README.md
