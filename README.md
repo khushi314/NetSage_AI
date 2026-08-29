@@ -3,6 +3,14 @@
 An enterprise-grade autonomous network reliability and automated troubleshooting pipeline that ingests raw Cisco telemetry, isolates multi-layer network faults, dynamically synthesizes Cisco IOS remediation configurations, computes operational blast radii, and generates reversible rollback scripts under a strict Human-in-the-Loop verification model.
 
 ---
+[DEMO VIDEO]
+
+
+https://github.com/user-attachments/assets/496965b6-e33a-4a44-8bb2-56b2441280f4
+
+
+
+
 
 ## 📌 Problem Statement
 
